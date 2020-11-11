@@ -5,6 +5,8 @@ $arg= array(
 );
 
 $division = new WP_Query($arg);
+$terminos_toaxonomias = get_terms(array('taxonomy' => 'tipo-Producto'));
+
 
                                     
 
@@ -36,38 +38,32 @@ get_header();?>
                 </div>
                 <div class="row row-centered">
                     <?php
-                        while($division->have_posts()): $division->the_post();
-                        $enlaces = get_field('enlaces_division');
-                     
-                        
-                       
-                       
-                    ?>
+                     foreach( $terminos_toaxonomias as $terminos_toaxonomia):
+                        $image = get_field('img_taxonomia', $terminos_toaxonomia);
+                        $link = get_term_link($terminos_toaxonomia);
+                        ?>
+                    
                     <div class="col-lg-6 col-md-12 col-xs-12">
                         <div class="main-items">
                             <div class="hovereffect col-centered">
-                                <img class="img-responsive" src="<?php the_post_thumbnail_url('small')?>" alt="">
+                                <img class="img-responsive" src="<?php echo $image;?>" alt="">
                                 <div class="overlay text-center">
-                                    <h2><a href="<?php echo get_category_link( $enlaces ); ?>" class="oxygen">
-                                        <?php the_title();
-                                       
-                                         
-                                        ?>
+                                
+                                    <h2><a href="<?php echo $link;?>" class="oxygen">
+                                        <?php echo $terminos_toaxonomia->name;?>
                                     </a>
                                     </h2>
-                                    <a href="<?php echo get_category_link( $enlaces ); ?>" class="info oxygen">
+                                    <a href="<?php echo $link; ?>" class="info oxygen">
                                         click
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php
+                    endforeach;
                     
-                        <?php
-
-
-                     
-                    endwhile;?>
+                    ?>
                 </div>
             </div>
         </div>
