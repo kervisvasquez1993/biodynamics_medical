@@ -54,7 +54,8 @@ add_action( 'pre_get_posts', 'add_custom_pt' );
         wp_enqueue_style('normalize-map','https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css.map', array(),'8.0.1','all');
         wp_enqueue_style('bootstraps','https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', array(),'4.2.3','all');
         wp_enqueue_style('font-awesome','https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(),'4.7.0'.'all');
-       // wp_enqueue_style('fontawesome',get_template_directory_uri().'/css/font-awesome.css',array(),'4','all');
+        wp_enqueue_script( 'filter', get_template_directory_uri() . '/js/jquery.filterizr.min.js', array('jquery'), '1.0.0', true );
+        // wp_enqueue_style('fontawesome',get_template_directory_uri().'/css/font-awesome.css',array(),'4','all');
         wp_enqueue_style('style',get_stylesheet_uri());
         //wp_enqueue_script('sc6',get_template_directory_uri().'/js/es6.js',array(),'1.0.0',true);
 

@@ -31,7 +31,26 @@ $args = array(
 		],
 	),
   );
+/*
+ Array ([name] => Sistema Biolock® 3.5 [id] => 115 ) 
+ Array ( [name] => Sistema Biolock® MIS [id] => 120 ) 
+ Array ( [name] => Sistema DHS / DCS [id] => 118 )
+ Array ( [name] => Sistema Biolock® 3.5 [id] => 115 )
+ Array ( [name] => Sistema Biolock® 3.5 [id] => 115 ) 
+ Array ( [name] => Sistema Biolock® MIS [id] => 120 ) 
+ Array ( [name] => Sistema Biolock® 3.5 [id] => 115 ) 
+ Array ( [name] => Sistema Biolock® MIS [id] => 120 )
 
+Array ( [0] => Array ( [0] => Sistema Biolock® 3.5 [1] => 115 )
+        [1] => Array ( [0] => Sistema Biolock® MIS [1] => 120 ) 
+        [2] => Array ( [0] => Sistema DHS / DCS [1] => 118 ) 
+        [3] => Array ( [0] => Sistema Biolock® 3.5 [1] => 115 ) 
+        [4] => Array ( [0] => Sistema Biolock® 3.5 [1] => 115 ) 
+        [5] => Array ( [0] => Sistema Biolock® MIS [1] => 120 ) 
+        [6] => Array ( [0] => Sistema Biolock® 3.5 [1] => 115 ) 
+        [7] => Array ( [0] => Sistema Biolock® MIS [1] => 120 ) 
+    )
+ */
 ?>
 <div class="item active responsive">
     <img src="<?php echo get_template_directory_uri();?>/img/banner-seccion-division.jpg" alt="">
@@ -41,20 +60,29 @@ $args = array(
         if($farmaco->have_posts()) : $elemento_arr = []; 
                          while($farmaco->have_posts()): $farmaco->the_post();
                          $terms = wp_get_post_terms(get_the_ID(), 'categoria-producto');
-                         $name  = $terms[0]->name;
+                         $name  = [$terms[0]->name , $terms[0]->term_id] ;
                          array_push($elemento_arr, $name);
                          ?>
                         <?php endwhile; wp_reset_postdata();
-                        $menu_categorias = array_unique($elemento_arr);
+                        print_r($elemento_arr);
+                        
+                       
+                        
+                        
+                        
+                        
+                        
+                        
                         ?>
-                        <div class="flex-row row">
+                        <div class="flex-row row simplefilter">
                                 <?php
                                 foreach($menu_categorias as $menu):?>
-                                    <div class="col-xs-2 col-sm-3 col-lg-3">
+                                    
+                                    <div class="fltr-controls col-xs-2 col-sm-3 col-lg-3">
                                       <div class="thumbanil">
                                         <div class="caption product-description NewsCycle">
                                              <h4> 
-                                                <?php echo $menu;?>
+                                                <?php // print_r($menu);?>
                                             </h4>
                                         </div>
                                      </div>
