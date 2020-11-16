@@ -82,9 +82,9 @@ $args = array(
                               $id_tax = $terms[0];
                               $imagen_categoria_producto = get_field('img_taxonomia',$id_tax);
                               ?>
-                              <div class="col-xs-6 col-sm-4 col-lg-4">
+                              <div class="col-xs-6 col-sm-4 col-lg-4 filtr-item" data-category="<?php echo $terms[0]->term_taxonomy_id?>">
                                 <div class="thumbanil">
-				                     <div class="card_wrap filtr-item" data-category="<?php echo $terms[0]->term_taxonomy_id?>">
+				                            <div class="card_wrap">
 					                    
                                         <div class="caption product-description NewsCycle">
                                              <h4><?php the_title(); ?></h4>
