@@ -3,29 +3,16 @@ $arg= array(
     'post_type' => 'divisions',
     'posts_per_page' => -1
 );
-
 $division = new WP_Query($arg);
 $terminos_toaxonomias = get_terms(array('taxonomy' => 'tipo-Producto'));
-
-
-                                    
-
 get_header();?>
-
-
-
-
-
-
-    <div class="corousel-inner" role="listbox">
+<div class="corousel-inner" role="listbox">
         <div class="item active responsive">
             <?php while(have_posts()): the_post(); ?>
             <img class="img-responsive" src="<?php echo get_the_post_thumbnail_url();?>" class="img-fluid" alt="Responsive image">
         </div>
-
-    </div>
-
-    <div class="container">
+</div>
+<div class="container">
         <div class="row">
             <div class="col-md-4 col-centered col-sm-12 col-lg-4 NewsCycle paddin-top">
                 <?php the_content();?>
@@ -60,10 +47,7 @@ get_header();?>
                             </div>
                         </div>
                     </div>
-                    <?php
-                    endforeach;
-                    
-                    ?>
+            <?php    endforeach;?>
                 </div>
             </div>
         </div>

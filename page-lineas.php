@@ -6,10 +6,10 @@
     $arg= array('post_type' => 'divisions',
                     'posts_per_page' => -1
                 );
+    $terminos_toaxonomias = get_terms(array('taxonomy' => 'tipo-Producto'));
     $division = new WP_Query($arg);
     get_header();
     ?>
-    <?php print_r($arg); ?>
 <div class="coriusel-inner" role="listbox">
     <div class="item active responsive">
         <img src="<?php echo get_the_post_thumbnail_url();?>" class="img-fluid" alt="">
@@ -23,30 +23,31 @@
     </span>
 
     <div class="row row-centered">
-        <?php
-        while(
-            $division->have_posts()): $division->the_post();
-            $enlaces = get_field('enlaces_division');
-            
-            ?>
-            <div class="col-lg-4 col-md-6 col-xs-12">
-                <div class="main-items">
-                    <div class="hovereffect col-centered">
-                        <img class="img-responsive" src="<?php the_post_thumbnail_url('small')?>" alt="">
-                        <div class="overlay text-center">
-                            <h2><a href="<?php echo get_category_link( $enlaces ); ?>" class="oxygen">
-                                    <?php the_title();?>
-                                </a>
-                            </h2>
-                            <a href="<?php echo get_category_link( $enlaces ); ?>" class="info oxygen">
-                                click
-                            </a>
+                    <?php
+                     foreach( $terminos_toaxonomias as $terminos_toaxonomia):
+                        $image = get_field('img_taxonomia', $terminos_toaxonomia);
+                        $link = get_term_link($terminos_toaxonomia);
+                        ?>
+                    
+                    <div class="col-lg-6 col-md-12 col-xs-12">
+                        <div class="main-items">
+                            <div class="hovereffect col-centered">
+                                <img class="img-responsive" src="<?php echo $image;?>" alt="">
+                                <div class="overlay text-center">
+                                
+                                    <h2><a href="<?php echo $link;?>" class="oxygen">
+                                        <?php echo $terminos_toaxonomia->name;?>
+                                    </a>
+                                    </h2>
+                                    <a href="<?php echo $link; ?>" class="info oxygen">
+                                        click
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+            <?php    endforeach;?>
                 </div>
-            </div>
-        <?php endwhile;?>
-    </div>
 
 </div>
 <?php get_footer();?>

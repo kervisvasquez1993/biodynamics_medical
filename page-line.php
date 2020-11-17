@@ -4,8 +4,8 @@
   */
 
     $arg= array(
-                    'post_type' => 'divisions',
-                    'posts_per_page' => -1
+                'post_type' => 'divisions',
+                'posts_per_page' => -1
                 );
     $division = new WP_Query($arg);
     get_header();
