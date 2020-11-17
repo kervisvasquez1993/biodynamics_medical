@@ -7,7 +7,7 @@
                $category_link1 = get_category_link( $nombre_link_arr );
             ?>
 <div class="item active responsive">
-    <img class="img-responsive" src="<?php echo get_the_post_thumbnail_url();?>" class="img-fluid" alt="Responsive image">
+    <img src="<?php echo get_template_directory_uri();?>/img/banner-seccion-division.jpg" alt="">
 </div>
 <?php while(have_posts()): the_post(); ?>
     <div class="container" id="single">

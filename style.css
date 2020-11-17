@@ -709,6 +709,15 @@ html {
 .footer-distributed a:hover {
   color: #ff6160;
 }
+
+.card-title
+{
+  margin-bottom: .75rem;
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media (max-width: 600px) {
   .footer-distributed .footer-left,
   .footer-distributed .footer-right {

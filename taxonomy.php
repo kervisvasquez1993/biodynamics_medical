@@ -37,8 +37,8 @@ $args = array(
     <img src="<?php echo get_template_directory_uri();?>/img/banner-seccion-division.jpg" alt="">
 </div>
 <div class="container">
-<?php $biodynamics = new WP_Query($args);  
-        if($biodynamics->have_posts()) :
+    <?php $biodynamics = new WP_Query($args);  
+              if($biodynamics->have_posts()) :
                      $elemento_arr        = [];
                      $array_nuevo_letra   = [];
                      $array_nuevo_numero  = [];
@@ -53,50 +53,50 @@ $args = array(
                               $numeros  = array_unique($array_nuevo_numero);                        
                               $i++;
                               ?>
-                <?php   endwhile; wp_reset_postdata();
-                        
-                        $longitud = sizeof($entradas);
-                        $n = 0;
-                        ?>
-                       <div class="flex-row row simplefilter">
-                            <?php
-                              for($n; $n < $longitud ; $n++):?>
-                                <div class="fltr-controls col-xs-2 col-sm-3 col-lg-3" data-filter="<?php echo $numeros[$n];?>">
-                                    <div class="thumbanil">
-                                        <div class="caption product-description NewsCycle">
-                                            <h4> 
-                                              <?php echo $entradas[$n]; ?>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php
-                                endfor;
-                            ?>
-
-                        </div>
-                        <!--comenzamos la seccion de post de cada productos -->
-                        <div class="flex-row row filtr-container">
+              <?php   endwhile; wp_reset_postdata();
+                      
+                      $longitud = sizeof($entradas);
+                      $n = 0;
+                      ?>
+                      <div class="flex-row row simplefilter">
+                          <?php
+                            for($n; $n < $longitud ; $n++):?>
+                              <div class="fltr-controls col-xs-2 col-sm-3 col-lg-3" data-filter="<?php echo $numeros[$n];?>">
+                                  <div class="thumbanil">
+                                      <div class="caption product-description NewsCycle">
+                                          <h4> 
+                                            <?php echo $entradas[$n]; ?>
+                                          </h4>
+                                      </div>
+                                  </div>
+                              </div>
+                          <?php
+                            endfor;
+                          ?>
+                      </div>
+                      <!--comenzamos la seccion de post de cada productos -->
+                      <div class="flex-row row ">
+                        <div class="filtr-container">
                              <?php while($biodynamics->have_posts()): $biodynamics->the_post();
                               $terms = wp_get_post_terms(get_the_ID(), 'categoria-producto');
                               $id_tax = $terms[0];
                               $imagen_categoria_producto = get_field('img_taxonomia',$id_tax);
                               ?>
-                              <div class="col-xs-6 col-sm-4 col-lg-4 filtr-item" data-category="<?php echo $terms[0]->term_taxonomy_id?>">
-                                <div class="thumbanil">
-				                            <div class="card_wrap">
-					                    
-                                        <div class="caption product-description NewsCycle">
-                                             <h4><?php the_title(); ?></h4>
+                                  <div class="card col-12 col-sm-6 col-lg-4 filtr-item" data-category="<?php echo $terms[0]->term_taxonomy_id?>">
+                                        <img class="card-img-top" src="<?php the_post_thumbnail_url();?>" alt="Card image cap">
+                                        <div class="card-body">
+                                          <h5 class="card-title"><?php the_title();?></h5>
+                                          
+                                          <a href="<?php the_permalink();?>" class="btn product-description">Ver Producto</a>
                                         </div>
-                                    </div>
-                                </div>   
-                              </div>
+                                  </div>
                              <?php endwhile; wp_reset_postdata();?>
-                        </div>          
- 
-                        <?php endif;?>
-</div>
+                             <!--fin del ciclo de -->
+                        </div>
+                      </div>          
+              <?php endif;?>
+              <!--footer taxonomia-->
+
 <?php 
 
  get_footer();?>

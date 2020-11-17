@@ -32,7 +32,7 @@ function biodynamics_medical()
 	$biodynamics_campos = new_cmb2_box( array(
 		'id'            => 'biodynamics_campos',
 		'title'         => esc_html__( 'Campos para imagen y url', 'cmb2' ),
-		'object_types'  => array( 'post' ), // Post type
+		'object_types'  => array( 'post','productos' ), // Post type
 		// 'show_on_cb' => 'yourprefix_show_if_front_page', // function should return a bool value
 		// 'context'    => 'normal',
 		// 'priority'   => 'high',
