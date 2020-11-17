@@ -470,6 +470,11 @@ img {
 .thumbnail .caption {
   padding: 9px;
   color: #333;
+
+}
+.caption > * {
+  font-size: 14px;
+  font-weight: bold;
 }
 .product-description {
   background-color: #eff5f8;

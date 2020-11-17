@@ -59,6 +59,15 @@ $args = array(
                       $n = 0;
                       ?>
                       <div class="flex-row row simplefilter">
+                                <div class="fltr-controls col-xs-2 col-sm-3 col-lg-3" data-filter="all">
+                                  <div class="thumbanil">
+                                      <div class="caption product-description NewsCycle">
+                                          <h4> 
+                                            Todos los Productos
+                                          </h4>
+                                      </div>
+                                  </div>
+                                </div>
                           <?php
                             for($n; $n < $longitud ; $n++):?>
                               <div class="fltr-controls col-xs-2 col-sm-3 col-lg-3" data-filter="<?php echo $numeros[$n];?>">
