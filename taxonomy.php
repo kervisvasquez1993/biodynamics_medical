@@ -37,13 +37,18 @@ $args = array(
     <img src="<?php echo get_template_directory_uri();?>/img/banner-seccion-division.jpg" alt="">
 </div>
 <div class="container">
+<span class="ruta-interna abel">
+    <a href="<?php echo esc_url(home_url('/'));?>" class="black">Inicio</a> /
+    <a href="#" class="here"><?php echo $termino_actual->name;?></a> 
+
+    </span>
     <?php $biodynamics = new WP_Query($args);  
               if($biodynamics->have_posts()) :
                      $elemento_arr        = [];
                      $array_nuevo_letra   = [];
                      $array_nuevo_numero  = [];
                      $i                   =  0; 
-                        while($biodynamics->have_posts()): $biodynamics->the_post();
+                      while($biodynamics->have_posts()): $biodynamics->the_post();
                               $terms = wp_get_post_terms(get_the_ID(), 'categoria-producto');
                               $name  = [$terms[0]->name , $terms[0]->term_id];
                               array_push($elemento_arr, $name);
@@ -58,6 +63,18 @@ $args = array(
                       $longitud = sizeof($entradas);
                       $n = 0;
                       ?>
+                      <div class="container">
+                          <div class="row search-row">
+                               Buscar Producto
+                               <input
+                                 type="text"
+                                 class="search-field form-control fltr-controls filtr-search"
+                                 name="filtr-search"
+                                 placeholder="Buscar"
+                                 data-search
+                               />
+                          </div>
+                      </div>
                       <div class="flex-row row simplefilter">
                                 <div class="fltr-controls col-xs-2 col-sm-3 col-lg-3" data-filter="all">
                                   <div class="thumbanil">
@@ -69,7 +86,9 @@ $args = array(
                                   </div>
                                 </div>
                           <?php
-                            for($n; $n < $longitud ; $n++):?>
+                            for($n; $n <= $longitud ; $n++):
+                              if($numeros[$n] != ''):
+                            ?>
                               <div class="fltr-controls col-xs-2 col-sm-3 col-lg-3" data-filter="<?php echo $numeros[$n];?>">
                                   <div class="thumbanil">
                                       <div class="caption product-description NewsCycle">
@@ -80,6 +99,7 @@ $args = array(
                                   </div>
                               </div>
                           <?php
+                            endif;
                             endfor;
                           ?>
                       </div>
