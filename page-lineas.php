@@ -29,7 +29,7 @@
                         $link = get_term_link($terminos_toaxonomia);
                     ?>
                     
-                    <div class="col-lg-6 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-6 col-xs-12">
                         <div class="main-items">
                             <div class="hovereffect col-centered">
                                 <img class="img-responsive" src="<?php echo $image;?>" alt="">
